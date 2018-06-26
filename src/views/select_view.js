@@ -6,9 +6,14 @@ const SelectView = function(selectElement) {
 
 SelectView.prototype.bindEvents = function () {
   PubSub.subscribe('InstrumentFamilies:all-families-ready', (event) => {
-    console.log(`selectView successfully receives instrumentFamilies payload ${event.detail}`);
     const allInstrumentFamilies = event.detail;
     this.populate(allInstrumentFamilies);
+  });
+
+  this.selectElement.addEventListener('change', (event) => {
+    const familyIndex = event.target.value;
+    console.log(familyIndex);
+    PubSub.publish('SelectView:select-changed', familyIndex);
   });
 };
 
