@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const instrumentFamilies = new InstrumentFamilies();
   instrumentFamilies.bindEvents();
 
+  const detailsHeader = document.querySelector('#family-name')
   const detailsElement = document.querySelector('#details-view')
-  console.log(detailsElement);
-  const detailsView = new DetailsView(detailsElement);
+  const detailsView = new DetailsView(detailsHeader, detailsElement);
   detailsView.bindEvents();
 });
