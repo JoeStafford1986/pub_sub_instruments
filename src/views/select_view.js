@@ -12,7 +12,6 @@ SelectView.prototype.bindEvents = function () {
 
   this.selectElement.addEventListener('change', (event) => {
     const familyIndex = event.target.value;
-    console.log(familyIndex);
     PubSub.publish('SelectView:select-changed', familyIndex);
   });
 };
