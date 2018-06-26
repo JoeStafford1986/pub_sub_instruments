@@ -35,8 +35,13 @@ InstrumentFamilies.prototype.bindEvents = function() {
 
   PubSub.subscribe('SelectView:select-changed', (event) => {
     const familyIndex = event.detail;
-    console.log(`InstrumentFamilies got: ${familyIndex}`);
+    this.publishFamilyDetail(familyIndex);
   });
+};
+
+InstrumentFamilies.prototype.publishFamilyDetail = function (familyIndex) {
+  const selectedFamily = this.instrumentFamilies[familyIndex];
+  PubSub.publish('InstrumentFamilies:individual-family-ready', selectedFamily);
 };
 
 module.exports = InstrumentFamilies;
