@@ -18,6 +18,19 @@ DetailsView.prototype.render = function (instrumentFamily) {
   const infoParagraph = document.createElement('p');
   infoParagraph.textContent = `${instrumentFamily.description}`;
   this.detailsDescription.appendChild(infoParagraph);
+  this.detailsDescription.appendChild(this.renderInstruments(instrumentFamily));
+};
+
+DetailsView.prototype.renderInstruments = function (instrumentFamily) {
+  const orderedList = document.createElement('ol');
+  console.log(orderedList);
+  for (let instrument of instrumentFamily.instruments) {
+    const listItem = document.createElement('li');
+    let listContent = document.createTextNode(`${instrument}`);
+    listItem.appendChild(listContent);
+    orderedList.appendChild(listItem);
+  }
+  return orderedList;
 };
 
 module.exports = DetailsView;
